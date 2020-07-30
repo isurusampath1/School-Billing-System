@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>School Billing System</title>
 </head><!DOCTYPE html>
 <html lang="en">
 
@@ -170,7 +170,32 @@
                 </div>
             </div>
 
-<!--            <h1> Billing Details</h1>-->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Index NO</th>
+                    <th>Full Name</th>
+                    <th>Class Name</th>
+                    <th>Term Fee</th>
+                    <th>Security Fee</th>
+                    <th>Total Fee</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each = "bill:${billingDetails}">
+                    <td th:text="${bill.admissionNumber}"></td>
+                    <td th:text="${bill.fullName}"></td>
+                    <td th:text="${bill.className}"></td>
+                    <td th:text="${bill.termFee}"></td>
+                    <td th:text="${bill.securityFee}"></td>
+<!--                    <td th:text="${bill.address}"></td>-->
+                </tr>
+                </tbody>
+            </table>
+
+
+            <!--            <h1> Billing Details</h1>-->
 
 
 
