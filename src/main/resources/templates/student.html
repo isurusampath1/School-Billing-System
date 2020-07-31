@@ -42,7 +42,7 @@
     ======================================================= -->
 </head>
 
-<body>
+<body onload="javascript:loadClassInfo()">
 <!-- container section start -->
 <section id="container" class="">
 
@@ -187,7 +187,7 @@
                     <td th:text="${student.firstName}"></td>
                     <td th:text="${student.lastName}"></td>
                     <td th:text="${student.fullName}"></td>
-                    <td th:text="${student.className}"></td>
+<!--                    <td th:text="${student.className}"></td>-->
                     <td th:text="${student.address}"></td>
                     <td th:text="${student.gender}"></td>
                     <td th:text="${student.guardianName}"></td>
@@ -365,6 +365,11 @@
           }
         });
       });
+
+      function loadClassInfo() {
+          console.log("isuru");
+          // load class information
+      }
     </script>
 
 </body>

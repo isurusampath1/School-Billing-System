@@ -1,25 +1,35 @@
 package com.isoft.SchoolBilling.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class ClassRoom {
 
     @Id
+    @GeneratedValue
+    private int id;
     private String className;
-    private String termFee;
-    private String securityFee;
-
-
+    private double termFee;
+    private double securityFee;
 
     public ClassRoom() {
     }
 
-    public ClassRoom(String className, String termFee, String securityFee) {
+    public ClassRoom(int id, String className, double termFee, double securityFee) {
+        this.id = id;
         this.className = className;
         this.termFee = termFee;
         this.securityFee = securityFee;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getClassName() {
@@ -30,19 +40,20 @@ public class ClassRoom {
         this.className = className;
     }
 
-    public String getTermFee() {
+    public double getTermFee() {
         return termFee;
     }
 
-    public void setTermFee(String termFee) {
+    public void setTermFee(double termFee) {
         this.termFee = termFee;
     }
 
-    public String getSecurityFee() {
+    public double getSecurityFee() {
         return securityFee;
     }
 
-    public void setSecurityFee(String securityFee) {
+    public void setSecurityFee(double securityFee) {
         this.securityFee = securityFee;
     }
 }
+

@@ -18,7 +18,7 @@ public class BillingController {
     //get Billing details
     @GetMapping("/billings")
     public String getBillings(Model model){
-        List<Billing> billingList = billingService.getDetails();
+        List<Billing> billingList = billingService.getNotPaidStudentList();
         model.addAttribute("billingDetails", billingList);
         return "billing";
     }

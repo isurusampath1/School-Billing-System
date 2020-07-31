@@ -6,39 +6,45 @@ import javax.persistence.*;
 public class Student {
 
     @Id
+    @GeneratedValue
+    private Integer id;
     private String admissionNumber;
     private String firstName;
     private String lastName;
     private String fullName;
-    private String className;
     private String gender;
     private String address;
     private String guardianName;
     private String guardingTP;
 
     @ManyToOne
-    @JoinColumn(name = "classid", insertable = false, updatable = false)
-    private ClassRoom aClassRoom;
-    private String classid;
-
-    @OneToOne
-    @JoinColumn(name = "billingid",insertable = false,updatable = false)
-    private Billing billing;
-    private Integer billingid;
+    @JoinColumn(name = "classRoom", referencedColumnName = "id", insertable = false, updatable = false)
+    private ClassRoom classRoom;
 
     public Student() {
     }
 
-    public Student(String admissionNumber, String firstName, String lastName, String fullName, String className, String gender, String address, String guardianName, String guardingTP) {
+    public Student(int id, String admissionNumber,
+                   String firstName, String lastName,
+                   String fullName, String gender, String address,
+                   String guardianName, String guardingTP) {
+        this.id = id;
         this.admissionNumber = admissionNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.fullName = fullName;
-        this.className = className;
         this.gender = gender;
         this.address = address;
         this.guardianName = guardianName;
         this.guardingTP = guardingTP;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAdmissionNumber() {
@@ -71,14 +77,6 @@ public class Student {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
     }
 
     public String getGender() {

@@ -1,57 +1,54 @@
 package com.isoft.SchoolBilling.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import com.isoft.SchoolBilling.enums.BillingStatus;
+
+import javax.persistence.*;
 
 @Entity
 public class Billing {
 
     @Id
+    @GeneratedValue
     private Integer id;
     private String admissionNumber;
     private String fullName;
     private String className;
-    private String termFee;
-    private String securityFee;
-    private String state;
+    private double termFee;
+    private double securityFee;
+    private BillingStatus billingStatus;
 
-    @ManyToOne
-    @JoinColumn(name = "classid", insertable = false,updatable = false)
-    private ClassRoom aClassRoom;
-    private String classid;
-
-
+    @OneToOne
+    @JoinColumn(name = "student", referencedColumnName = "id", insertable = false,updatable = false)
+    private Student student;
 
     public Billing() {
     }
 
-    public Billing(Integer id, String admissionNumber, String fullName, String className, String termFee, String securityFee, String state) {
+    public Billing(int id, String admissionNumber, String fullName, String className, double termFee, double securityFee, BillingStatus billingStatus) {
         this.id = id;
         this.admissionNumber = admissionNumber;
         this.fullName = fullName;
         this.className = className;
         this.termFee = termFee;
         this.securityFee = securityFee;
-        this.state = state;
+        this.billingStatus = billingStatus;
 
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getState() {
-        return state;
+    public BillingStatus getState() {
+        return billingStatus;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setState(BillingStatus state) {
+        this.billingStatus = state;
     }
 
     public String getAdmissionNumber() {
@@ -78,19 +75,19 @@ public class Billing {
         this.className = className;
     }
 
-    public String getTermFee() {
+    public double getTermFee() {
         return termFee;
     }
 
-    public void setTermFee(String termFee) {
+    public void setTermFee(double termFee) {
         this.termFee = termFee;
     }
 
-    public String getSecurityFee() {
+    public double getSecurityFee() {
         return securityFee;
     }
 
-    public void setSecurityFee(String securityFee) {
+    public void setSecurityFee(double securityFee) {
         this.securityFee = securityFee;
     }
 }
