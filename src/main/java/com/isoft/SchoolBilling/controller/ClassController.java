@@ -16,6 +16,7 @@ public class ClassController {
     @Autowired
     private ClassService classService;
 
+    //Get Classroom details
     @GetMapping("/classes")
     public String getClasses(Model model){
         List<ClassRoom> classRoomList= classService.getAllClasses();
@@ -24,7 +25,7 @@ public class ClassController {
     }
 
 
-    //Save ne Class
+    //Save new Class
     @PostMapping("/classes/addNew")
     public String addNewClass(ClassRoom classRoom){
         classService.addNewClass(classRoom);
