@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClassService {
@@ -22,5 +23,20 @@ public class ClassService {
 
     public List<ClassRoom> getAllClasses(){
         return classRepository.findAll();
+    }
+
+    public List<ClassRoom> findAll() {
+        return classRepository.findAll();
+    }
+
+    public ClassRoom findById(int classRoomId) {
+        ClassRoom classRoom = null;
+        Optional<ClassRoom> byId = classRepository.findById(classRoomId);
+
+        if (byId.isPresent()) {
+            classRoom = byId.get();
+        }
+
+        return classRoom;
     }
 }

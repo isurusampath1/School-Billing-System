@@ -1,25 +1,30 @@
 package com.isoft.SchoolBilling.controller;
 
-import com.isoft.SchoolBilling.model.Billing;
+import com.isoft.SchoolBilling.dto.BillingDTO;
 import com.isoft.SchoolBilling.service.BillingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
 public class BillingController {
 
-    @Autowired
-    private BillingService billingService;
+    private final BillingService billingService;
 
-    //get Billing details
+    @Autowired
+    public BillingController(final BillingService billingService) {
+        this.billingService = billingService;
+    }
+
+
     @GetMapping("/billings")
-    public String getBillings(Model model){
-        List<Billing> billingList = billingService.getNotPaidStudentList();
-        model.addAttribute("billingDetails", billingList);
-        return "billing";
+    public ModelAndView getBillings(ModelAndView modelAndView){
+        List<BillingDTO> billingList = billingService.getBillingList();
+        modelAndView.addObject("billingDetails", billingList);
+        modelAndView.setViewName("billing");
+        return modelAndView;
     }
 }

@@ -1,13 +1,7 @@
-package com.isoft.SchoolBilling.model;
+package com.isoft.SchoolBilling.dto;
 
-import javax.persistence.*;
-
-@Entity
-public class Student {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class StudentDTO {
+    private Integer id;
     private String admissionNumber;
     private String firstName;
     private String lastName;
@@ -16,35 +10,14 @@ public class Student {
     private String address;
     private String guardianName;
     private String guardingTP;
+    private int classRoomId;
+    private String className;
 
-    @ManyToOne
-    @JoinColumn(name = "classRoom_id", updatable = false)
-    private ClassRoom classRoom;
-
-    public Student() {
-    }
-
-    public Student(int id, String admissionNumber,
-                   String firstName, String lastName,
-                   String fullName, String gender, String address,
-                   String guardianName, String guardingTP, ClassRoom classRoom) {
-        this.id = id;
-        this.admissionNumber = admissionNumber;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.fullName = fullName;
-        this.gender = gender;
-        this.address = address;
-        this.guardianName = guardianName;
-        this.guardingTP = guardingTP;
-        this.classRoom = classRoom;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -112,11 +85,19 @@ public class Student {
         this.guardingTP = guardingTP;
     }
 
-    public ClassRoom getClassRoom() {
-        return classRoom;
+    public int getClassRoomId() {
+        return classRoomId;
     }
 
-    public void setClassRoom(ClassRoom classRoom) {
-        this.classRoom = classRoom;
+    public void setClassRoomId(int classRoomId) {
+        this.classRoomId = classRoomId;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

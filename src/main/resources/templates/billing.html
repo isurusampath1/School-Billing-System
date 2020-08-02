@@ -171,7 +171,7 @@
                     <td th:text="${bill.className}"></td>
                     <td th:text="${bill.termFee}"></td>
                     <td th:text="${bill.securityFee}"></td>
-<!--                    <td th:text="${bill.address}"></td>-->
+                    <td th:text="${bill.termFee} + ${bill.securityFee}"></td>
                 </tr>
                 </tbody>
             </table>

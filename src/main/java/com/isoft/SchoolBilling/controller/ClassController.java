@@ -16,7 +16,6 @@ public class ClassController {
     @Autowired
     private ClassService classService;
 
-    //Get Classroom details
     @GetMapping("/classes")
     public String getClasses(Model model){
         List<ClassRoom> classRoomList= classService.getAllClasses();
